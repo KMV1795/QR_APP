@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "749182420934",
+    "project_id": "qr-app-40bda",
+    "storage_bucket": "qr-app-40bda.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:749182420934:android:dcc4d25011a3939a2bd4c7",
+        "android_client_info": {
+          "package_name": "com.example.qr_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "749182420934-15e1qsv8cm0ogilldetf54ps5rqncpb4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4qQHEiZ521a8NbKTEQ3iuowa04XUzPK8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "749182420934-15e1qsv8cm0ogilldetf54ps5rqncpb4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

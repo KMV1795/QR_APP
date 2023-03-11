@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qr_app/Utils/colors.dart';
 import 'package:qr_app/services/ip_address_provider.dart';
 import 'package:qr_app/services/login_time_provider.dart';
 import 'package:qr_app/view_screens/qr_page.dart';
+import '../services/auth_service.dart';
 import '../services/location_provider.dart';
 import '../services/random_string_provider.dart';
 import '../widgets/const_widgets.dart';
@@ -20,12 +22,35 @@ class _LoginPageState extends State<LoginPage> {
 
   TextEditingController phoneNumber = TextEditingController();
   TextEditingController otp = TextEditingController();
+  bool _isLoading = false;
 
+  Future<void> _login() async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    final AuthService auth = Provider.of<AuthService>(context, listen: false);
+
+    try {
+      await auth.signInWithPhoneNumber(phoneNumber.text.trim(),);
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const QrPage(),),
+      );
+    } catch (e) {
+      setState(() {
+        _isLoading = false;
+      });
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(e.toString())),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurple,
+      backgroundColor: primary,
       body: Stack(
         children: [
           /* Circle at the top right corner */
@@ -64,16 +89,18 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   const SizedBox(height: 50),
-                  Button(
-                    callback: () {
+                  _isLoading
+                      ? const CircularProgressIndicator()
+                      : Button(
+                        callback: () {
                       Provider.of<RandomStringProvider>(context, listen: false).generateRandomString();
                       Provider.of<LoginTimeProvider>(context, listen: false).getDateTime();
                       Provider.of<LocationProvider>(context, listen: false).getLocation();
                       Provider.of<IpAddressProvider>(context, listen: false).getIpAddress();
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const QrPage(),),
-                      );
+
+                      _login();
+
+
                     },
                     actionName: 'LOGIN',
                   ),
@@ -82,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           /* Title Widget */
-          const TitleWidget(title: 'LOGIN',),
+           const TitleWidget(title: 'LOGIN',),
         ],
       ),
     );
@@ -108,7 +135,7 @@ class _LoginPageState extends State<LoginPage> {
           borderRadius: BorderRadius.circular(10),
         ),
         filled: true,
-        fillColor: Colors.deepPurple,
+        fillColor: primary,
         // hintText: 'Enter Phone Number',
         // hintStyle: const TextStyle(color: Colors.white70),
       ),

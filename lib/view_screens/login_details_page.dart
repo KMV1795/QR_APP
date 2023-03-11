@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:qr_app/Utils/colors.dart';
 import '../widgets/const_widgets.dart';
 
 class LoginDetails extends StatefulWidget {
@@ -15,7 +15,7 @@ class _LoginDetailsState extends State<LoginDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurple,
+      backgroundColor: primary,
       body: Stack(
         children: [
           /* Circle at the top right corner */
@@ -46,7 +46,7 @@ class _LoginDetailsState extends State<LoginDetails> {
                       indicator:  UnderlineTabIndicator(
                           borderSide: BorderSide(
                             width: 4,
-                            color:Colors.white70,
+                            color:textColor,
                           ),),
                       tabs: [
                          Tab(text: "TODAY",),
@@ -79,13 +79,13 @@ class _LoginDetailsState extends State<LoginDetails> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                IconButton(onPressed:(){Navigator.pop(context);}, icon: const Icon(Icons.arrow_back_ios_sharp,color: Colors.white,)),
+                IconButton(onPressed:(){Navigator.pop(context);}, icon: const Icon(Icons.arrow_back_ios_sharp,color: textColor,)),
                 TextButton(
                   onPressed: () {  },
                   child: const Text(
                     "LOGOUT",
                     style: TextStyle(
-                        color: Colors.white,
+                        color: textColor,
                         fontSize: 20,
                         fontWeight: FontWeight.w500),
                   ),
@@ -114,17 +114,17 @@ class _LoginDetailsState extends State<LoginDetails> {
                   padding: const EdgeInsets.only(left: 10,top: 10,bottom: 10),
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(10)),
-                    color: Colors.white10,
+                    color: actionBox,
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: const [
-                      Text("2.50 PM",style: TextStyle(color: Colors.white70),),
+                      Text("2.50 PM",style: TextStyle(color: textColor),),
                       Spacer(),
-                      Text("IP: 123.123.123.123",style: TextStyle(color: Colors.white70),),
+                      Text("IP: 123.123.123.123",style: TextStyle(color: textColor),),
                       Spacer(),
-                      Text("CHENNAI",style: TextStyle(color: Colors.white70),),
+                      Text("CHENNAI",style: TextStyle(color: textColor),),
                     ],
                   ),
                 ),

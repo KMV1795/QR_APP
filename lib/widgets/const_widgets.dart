@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../Utils/colors.dart';
 
 class PositionedContainer extends StatelessWidget {
   const PositionedContainer({Key? key}) : super(key: key);
@@ -12,9 +13,9 @@ class PositionedContainer extends StatelessWidget {
       child: Container(
         height: 150,
         width: 150,
-        decoration: BoxDecoration(
-          color: Colors.deepPurpleAccent.shade400,
-          borderRadius: const BorderRadius.all(Radius.circular(200)),
+        decoration: const BoxDecoration(
+          color: circle,
+          borderRadius:  BorderRadius.all(Radius.circular(200)),
         ),
       ),
     );
@@ -35,13 +36,13 @@ class TitleWidget extends StatelessWidget {
         margin: const EdgeInsets.only(top: 80),
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(10)),
-          color: Colors.blue,
+          color: titleBox,
         ),
         child: Center(
           child: Text(
             title,
             style: const TextStyle(
-                color: Colors.white,
+                color: textColor,
                 fontSize: 25,
                 fontWeight: FontWeight.normal),
           ),
@@ -64,14 +65,14 @@ class Button extends StatelessWidget {
         alignment: Alignment.bottomCenter,
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.white24,
+            backgroundColor: actionBox,
             maximumSize: const Size(280, 60),
           ),
           onPressed: callback,
           child: Center(
             child: Text(
               actionName,
-              style: const TextStyle(color: Colors.white70, fontSize: 25),
+              style: const TextStyle(color: textColor, fontSize: 25),
             ),
           ),
         ));
@@ -132,7 +133,7 @@ Widget inputName(String name){
   return  Text(
     name,
     style: const TextStyle(
-        color: Colors.white70,
+        color: textColor,
         fontWeight: FontWeight.normal,
         fontSize: 20),
   );

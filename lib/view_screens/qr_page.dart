@@ -5,6 +5,7 @@ import 'package:qr_app/services/ip_address_provider.dart';
 import 'package:qr_app/services/location_provider.dart';
 import 'package:qr_app/services/login_time_provider.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import '../Utils/colors.dart';
 import '../services/random_string_provider.dart';
 import '../widgets/const_widgets.dart';
 import 'login_details_page.dart';
@@ -26,7 +27,7 @@ class _QrPageState extends State<QrPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurple,
+      backgroundColor: primary,
       body: Stack(
         children: [
           /* Circle at the top right corner */
@@ -72,14 +73,14 @@ class _QrPageState extends State<QrPage> {
                           Radius.circular(15),
                         ),
                         border: Border.all(
-                          color: Colors.white70,
+                          color: textColor,
                         ),
                       ),
                       child: Center(
                         child: Text(
                           "Last Login Today, ${timeModel.loginTime}",
                           style: const TextStyle(
-                              color: Colors.white70,
+                              color: textColor,
                               fontWeight: FontWeight.normal,
                               fontSize: 20),
                         ),
@@ -100,14 +101,14 @@ class _QrPageState extends State<QrPage> {
                               Radius.circular(15),
                             ),
                             border: Border.all(
-                              color: Colors.white70,
+                              color: textColor,
                             ),
                           ),
                           child: Center(
                             child: Text(
                               ipModel.ipAddress,
                               style: const TextStyle(
-                                  color: Colors.white70,
+                                  color: textColor,
                                   fontWeight: FontWeight.normal,
                                   fontSize: 20),
                             ),
@@ -156,7 +157,7 @@ class _QrPageState extends State<QrPage> {
                       child: const Text(
                         "Generated Number",
                         style: TextStyle(
-                            color: Colors.white70,
+                            color: textColor,
                             fontWeight: FontWeight.normal,
                             fontSize: 23),
                       ),
@@ -170,7 +171,7 @@ class _QrPageState extends State<QrPage> {
                         child: Text(
                           model.randomString,
                           style: const TextStyle(
-                              color: Colors.white70,
+                              color: textColor,
                               fontWeight: FontWeight.normal,
                               fontSize: 30),
                         ),
